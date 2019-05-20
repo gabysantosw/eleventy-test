@@ -1,3 +1,87 @@
+/* IMPORTS */
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap');
+
+/* SETUP */
+:root {
+  font-size: 10px;
+}
+
+/* RESETS */
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, pre, p, ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+/* TYPOGRAPHY */
+.t-header {
+  font-size: 2.8rem;
+}
+
+/* UTILITY */
 .test {
-  background-color: blue;
+  background-color: hsl(210, 30%, 80%);
+}
+
+/* BASIC */
+.body {
+  font-family: Nunito, sans-serif;
+}
+
+
+
+/* ARTICLE */
+.main-article {
+  background-color: hsl(0, 10%, 95%);
+}
+
+.main-article > h1::first-letter, h2::first-letter, h3::first-letter, h4::first-letter, p::first-letter {
+  text-transform: capitalize;
+}
+
+.main-article > h1, h2, h3, h4, p {
+
+}
+
+.main-article > h5, h6 {
+  text-transform: uppercase;
+}
+
+.main-article > h1 {
+  font-size: 2.8rem;
+}
+
+.main-article > h2 {
+  font-size: 2.6rem;
+}
+
+.main-article > h3 {
+  font-size: 2.4rem;
+}
+
+.main-article > h4 {
+  font-size: 2.2rem;
+}
+
+.main-article > h5 {
+  font-size: 1.8rem;
+}
+
+.main-article > h6 {
+  font-size: 1.6rem;
+}
+
+.main-article > p, ul {
+  font-size: 1.6rem;
+}
+
+.main-article > pre {
+  font-family: monospace;
+  font-size: 1.6rem;
 }

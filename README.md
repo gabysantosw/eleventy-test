@@ -54,3 +54,63 @@ layout: layout.njk
 
 ### to not commit to github node_modules
 - create `.gitignore` file and add `node_modules/` in one line, `package-lock.json` is recommended to ignore too
+
+### the `.eleventy.js` file
+- We'll use it to set a folder for the input, by default is the current directory:
+  - `module.exports = { dir: { input: "folder-name" } }`
+- Setting the html template and markdown template to nunjucks, we add these properties to the `module.exports`: `markdownTemplateEngine: "njk"` and `htmlTemplateEngine: "njk"`
+The file will end up like:
+```js
+module.exports = {
+  dir: {
+    input: "source",
+  },
+  markdownTemplateEngine: "njk",
+  htmlTemplateEngine: "njk"
+};
+```
+
+### Content is displayed
+- `backtics` go inside a p tag and a code tag
+- code syntax will go inside a pre tag and a code tag, a class 'language-js' will be added if code language is specified
+- headings will correspond to h1-h6
+- list items will be wrapped inside ul / ol
+- list item text will be wrapped around a p tag, inside an li
+
+### Collections / tags
+- setting a `tags: post` to the file will save it in a collection
+- these collection can be accessed with `collection.post`
+- other contents like 'title' of the file can be accessed using `.data.title`
+- setting tags in the .md can be done like: `tags: ['cats', 'dogs']` or `tags:
+  - cats
+  - dogs`
+
+### Nunjucks for in
+`{%- for post in collections.post -%}` -> initiates the loop
+`{%- endfor -%}` -> ends loop
+
+### Navigation links with a class for current page
+- `page.url` -> Eleventy variable to find the current page
+- `tags.url` -> can be accessed through collections
+- Using the for post in collections.post to compare the `page.url` with the `post.url`
+```html
+<ul>
+{%- for post in collections.post -%}
+  <li{% if page.url == post.url %} class="active"{% endif %}>{{ post.data.title }}</li>
+{%- endfor -%}
+</ul>
+```
+
+### All collection
+- `collections.all` -> Eleventy places all the content inside
+- `eleventyExcludeFromCollections: true` can be set in the .md to avoid the content to be available in collections
+
+### Collection data
+- `.url`
+- `.inputPath`
+- `.fileSlug`
+- `outputPath`
+- `.url`
+- `.date`
+- `.data`
+- `templateContent`

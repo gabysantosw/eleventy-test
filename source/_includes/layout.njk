@@ -8,9 +8,23 @@
   <title>Testing Eleventy</title>
   <style media="screen">{% include "styles.css" %}</style>
 </head>
-<body>
-  <h1 class="test">Testing Eleventy</h1>
-  {{ content | safe }}
+<body class="body">
+  <header>
+    <h1 class="test t-header">Testing Eleventy</h1>
+  </header>
+
+  <ul>
+  {%- for post in collections.post -%}
+    <li>{{ post.data.title }} <a href="{{ post.url }}"> go to post</a></li>
+  {%- endfor -%}
+  </ul>
+
+  <main>
+    <article class="main-article">
+      {{ content | safe }}
+    </article>
+  </main>
+
   <script>{% include "script.js" %}</script>
 </body>
 </html>
